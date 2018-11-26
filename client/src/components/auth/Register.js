@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import classnames from "classnames";
 export default class Register extends Component {
   constructor() {
     super();
@@ -27,12 +28,16 @@ export default class Register extends Component {
     }
     console.log(newUser)
     //请求
-    
-    axios.post('http://localhost:5000/api/users/register', newUser)
+
+    axios.post('/api/users/register', newUser)
       .then(res => console.log(res.data))
-      .catch(err => console.log(err))
+      .catch(err => this.setState({ errors: err.response.data })
+      )
+    console.log(this.state.errors)
   }
+
   render() {
+    const { errors } = this.state
 
     return (
       <div className="register">
@@ -46,10 +51,10 @@ export default class Register extends Component {
                 <div className="form-group">
                   <input
                     type="text"
-                    // className={classnames('form-control form-control-lg', {
-                    //   'is-invalid': errors.name
-                    // })}
-                    className="form-control form-control-lg"
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.name
+                    })}
+                    //className="form-control form-control-lg"
                     placeholder="用户名"
                     name="name"
                     value={this.state.name}
@@ -64,10 +69,10 @@ export default class Register extends Component {
                 <div className="form-group">
                   <input
                     type="email"
-                    className="form-control form-control-lg"
-                    // className={classnames('form-control form-control-lg', {
-                    //   'is-invalid': errors.email
-                    // })}
+                    //className="form-control form-control-lg"
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.email
+                    })}
                     placeholder="邮箱地址"
                     name="email"
                     value={this.state.email}
@@ -83,10 +88,10 @@ export default class Register extends Component {
                 <div className="form-group">
                   <input
                     type="password"
-                    className="form-control form-control-lg"
-                    // className={classnames('form-control form-control-lg', {
-                    //   'is-invalid': errors.password
-                    // })}
+                    // className="form-control form-control-lg"
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.password
+                    })}
                     placeholder="密码"
                     name="password"
                     value={this.state.password}
@@ -101,10 +106,10 @@ export default class Register extends Component {
                 <div className="form-group">
                   <input
                     type="password"
-                    className="form-control form-control-lg"
-                    // className={classnames('form-control form-control-lg', {
-                    //   'is-invalid': errors.password2
-                    // })}
+                    // className="form-control form-control-lg"
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.password2
+                    })}
                     placeholder="确认密码"
                     name="password2"
                     value={this.state.password2}

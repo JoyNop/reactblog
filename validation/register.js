@@ -29,8 +29,8 @@ module.exports = function validateRegisterInput(data) {
     errors.password = "密码不能为空!";
   }
 
-  if(!Validator.isLength(data.password,{min:6,max:30})){
-    errors.password = "密码的长度不能小于6位并且不能大于30位!";
+  if(!Validator.isLength(data.password,{min:2,max:30})){
+    errors.password = "密码的长度不能小于2位并且不能大于30位!";
   }
 
   if(Validator.isEmpty(data.password2)){
