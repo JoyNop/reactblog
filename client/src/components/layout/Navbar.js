@@ -3,7 +3,36 @@ import { Link } from 'react-router-dom';
 
 
 class Navbar extends Component {
+    onLogoutClick(e) {
+        e.preventDefault();
+        alert("123")
+    }
+    
     render() {
+        const authLinks = (
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <a href="" className="nav-link" onClick={this.onLogoutClick.bind(this)}>
+                  {/* <img style={{width: '25px', marginRight:'5px'}} className="rounded-circle" src={user.avatar} alt={user.name} /> 退出 */}
+                </a>
+              </li>
+            </ul>
+          )
+      
+          const guestLink = (
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/register">
+                  注册
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  登录
+                </Link>
+              </li>
+            </ul>
+          )
         return (
             <div>
                 <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
@@ -20,7 +49,8 @@ class Navbar extends Component {
                                     <Link className="nav-link" to="/profiles">开发者</Link>
                                 </li>
                             </ul>
-
+                            {authLinks}
+                            {guestLink}
                             {/* {isAuthenticated ? authLinks : guestLink} */}
                         </div>
                     </div>

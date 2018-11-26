@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import classnames from "classnames"
 export default class Login extends Component {
   constructor() {
     super();
@@ -27,6 +27,7 @@ export default class Login extends Component {
   }
 
   render() {
+    const {errors}=this.state
     return (
       <div className="login">
         <div className="container">
@@ -38,36 +39,36 @@ export default class Login extends Component {
                 <div className="form-group">
                   <input
                     type="email"
-                    // className={classnames('form-control form-control-lg', {
-                    //   'is-invalid': errors.email
-                    // })}
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.email
+                    })}
                     placeholder="邮箱地址"
                     name="email"
                     value={this.state.email}
                     onChange={this.onChange}
                   />
-                  {/* {
+                  {
                   errors.email && (<div className="invalid-feedback">
                     {errors.email}
                   </div>)
-                } */}
+                }
                 </div>
                 <div className="form-group">
                   <input
                     type="password"
-                    // className={classnames('form-control form-control-lg', {
-                    //   'is-invalid': errors.password
-                    // })}
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.password
+                    })}
                     placeholder="密码"
                     name="password"
                     value={this.state.password}
                     onChange={this.onChange}
                   />
-                  {/* {
+                  {
                   errors.password && (<div className="invalid-feedback">
                     {errors.password}
                   </div>)
-                } */}
+                }
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
