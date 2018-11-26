@@ -1,10 +1,10 @@
 import axios from 'axios';
-import jwt_decode from 'jwt-decode';
+import jwtdecode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 import { GET_ERRORS } from './types';
 import { SET_CURRENT_USER } from './types';
 
-
+//userData用户从表单提交数据
 export const registerUser = (userData, history) => dispatch => {
   // 请求
   axios.post("/api/users/register", userData)
@@ -29,7 +29,7 @@ export const loginUser = userData => dispatch => {
       setAuthToken(token);
 
       // 解析token
-      const decoded = jwt_decode(token);
+      const decoded = jwtdecode(token);
       // console.log(decoded);
       dispatch(setCurrentUser(decoded));
     })
