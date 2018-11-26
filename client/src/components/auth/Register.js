@@ -28,7 +28,7 @@ export default class Register extends Component {
     console.log(newUser)
     //请求
     
-    axios.post('http://localhost:5000/api/user/test', newUser)
+    axios.post('http://localhost:5000/api/users/register', newUser)
       .then(res => console.log(res.data))
       .catch(err => console.log(err))
   }
