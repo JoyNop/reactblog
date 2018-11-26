@@ -60,11 +60,11 @@ export default class Register extends Component {
                     value={this.state.name}
                     onChange={this.onChange}
                   />
-                  {/* {
+                  {
                         errors.name && (<div className="invalid-feedback">
                           {errors.name}
                         </div>)
-                      } */}
+                      }
                 </div>
                 <div className="form-group">
                   <input
@@ -78,11 +78,11 @@ export default class Register extends Component {
                     value={this.state.email}
                     onChange={this.onChange}
                   />
-                  {/* {
+                  {
                         errors.email && (<div className="invalid-feedback">
                           {errors.email}
                         </div>)
-                      } */}
+                      }
                   <small className="form-text text-muted">我们使用了gravatar全球公认头像, 如果需要有头像显示, 请使用在gravatar注册的邮箱</small>
                 </div>
                 <div className="form-group">
@@ -97,11 +97,11 @@ export default class Register extends Component {
                     value={this.state.password}
                     onChange={this.onChange}
                   />
-                  {/* {
+                  {
                         errors.password && (<div className="invalid-feedback">
                           {errors.password}
                         </div>)
-                      } */}
+                      }
                 </div>
                 <div className="form-group">
                   <input
@@ -115,11 +115,11 @@ export default class Register extends Component {
                     value={this.state.password2}
                     onChange={this.onChange}
                   />
-                  {/* {
+                  {
                         errors.password2 && (<div className="invalid-feedback">
                           {errors.password2}
                         </div>)
-                      } */}
+                      }
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
