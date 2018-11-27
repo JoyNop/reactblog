@@ -55,7 +55,7 @@ class Register extends Component {
 
   render() {
     const { errors } = this.state
-
+    const {user}=this.props.auth
     return (
       <div className="register">
         {/* {user ? user.name : null} */}
