@@ -22,7 +22,6 @@ export default class Login extends Component {
       password: this.state.password,
 
     }
-    alert("123")
     console.log(newUser)
   }
 
