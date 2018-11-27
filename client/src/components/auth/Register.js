@@ -43,7 +43,7 @@ class Register extends Component {
     console.log(newUser)
     
     //调用action
-    this.props.registerUser(newUser)
+    this.props.registerUser(newUser,this.props.history)
 
     //请求
     // axios.post('/api/users/register', newUser)
@@ -53,9 +53,17 @@ class Register extends Component {
     // console.log(this.state.errors)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      })
+    }
+  }
+
   render() {
     const { errors } = this.state
-    const {user}=this.props.auth
+    // const {user}=this.props.auth
     return (
       <div className="register">
         {/* {user ? user.name : null} */}
