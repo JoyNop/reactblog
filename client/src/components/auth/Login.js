@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import classnames from "classnames"
-export default class Login extends Component {
+
+import { loginUser } from "../../actions/authActions";
+import { connect } from "react-redux"
+
+class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -23,6 +27,8 @@ export default class Login extends Component {
 
     }
     console.log(newUser)
+    this.props.loginUser(newUser,this.props.history)
+
   }
 
   render() {
@@ -78,3 +84,9 @@ export default class Login extends Component {
     )
   }
 }
+// 将状态映射为属性
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors
+})
+export default connect(mapStateToProps, { loginUser })(Login);

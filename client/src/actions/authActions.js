@@ -21,6 +21,7 @@ export const registerUser = (userData, history) => dispatch => {
 export const loginUser = userData => dispatch => {
   axios.post("/api/users/login", userData)
     .then(res => {
+      console.log(res.data)
       const { token } = res.data;
       // console.log(token);
       // 存储token到LS
