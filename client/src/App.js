@@ -21,10 +21,21 @@ import Register from './components/auth/Register'
 import { Provider } from 'react-redux';
 
 //引入store
-import store  from './store'
+import store from './store'
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentUser } from './actions/authActions';
+import jwt_decode from 'jwt-decode'
 // const store=createStore("reducer","initialState","Middleware")
 // const store = createStore(() => [], {}, applyMiddleware())
 
+
+if (localStorage.jwtToken) {
+  setAuthToken(localStorage.jwtToken)
+
+  //解析token
+  const decoded = jwt_decode(localStorage.jwtToken)
+  store.dispatch(setCurrentUser(decoded))
+}
 
 class App extends Component {
   render() {
