@@ -4,6 +4,8 @@ import classnames from "classnames"
 import { loginUser } from "../../actions/authActions";
 import { connect } from "react-redux"
 
+import { PropTypes } from 'prop-types';
+
 class Login extends Component {
   constructor() {
     super();
@@ -29,6 +31,14 @@ class Login extends Component {
     console.log(newUser)
     this.props.loginUser(newUser,this.props.history)
 
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      })
+    }
   }
 
   render() {
@@ -84,6 +94,14 @@ class Login extends Component {
     )
   }
 }
+
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+}
+
+
 // 将状态映射为属性
 const mapStateToProps = (state) => ({
   auth: state.auth,
