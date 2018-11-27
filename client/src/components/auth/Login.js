@@ -29,8 +29,14 @@ class Login extends Component {
 
     }
     console.log(newUser)
-    this.props.loginUser(newUser,this.props.history)
+    this.props.loginUser(newUser, this.props.history)
 
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard')
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -45,7 +51,7 @@ class Login extends Component {
   }
 
   render() {
-    const {errors}=this.state
+    const { errors } = this.state
     return (
       <div className="login">
         <div className="container">
@@ -66,10 +72,10 @@ class Login extends Component {
                     onChange={this.onChange}
                   />
                   {
-                  errors.email && (<div className="invalid-feedback">
-                    {errors.email}
-                  </div>)
-                }
+                    errors.email && (<div className="invalid-feedback">
+                      {errors.email}
+                    </div>)
+                  }
                 </div>
                 <div className="form-group">
                   <input
@@ -83,10 +89,10 @@ class Login extends Component {
                     onChange={this.onChange}
                   />
                   {
-                  errors.password && (<div className="invalid-feedback">
-                    {errors.password}
-                  </div>)
-                }
+                    errors.password && (<div className="invalid-feedback">
+                      {errors.password}
+                    </div>)
+                  }
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>

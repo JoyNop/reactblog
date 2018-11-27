@@ -41,9 +41,9 @@ class Register extends Component {
 
     }
     console.log(newUser)
-    
+
     //调用action
-    this.props.registerUser(newUser,this.props.history)
+    this.props.registerUser(newUser, this.props.history)
 
     //请求
     // axios.post('/api/users/register', newUser)
@@ -51,6 +51,12 @@ class Register extends Component {
     //   .catch(err => this.setState({ errors: err.response.data })
     //   )
     // console.log(this.state.errors)
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard')
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -86,10 +92,10 @@ class Register extends Component {
                     onChange={this.onChange}
                   />
                   {
-                        errors.name && (<div className="invalid-feedback">
-                          {errors.name}
-                        </div>)
-                      }
+                    errors.name && (<div className="invalid-feedback">
+                      {errors.name}
+                    </div>)
+                  }
                 </div>
                 <div className="form-group">
                   <input
@@ -104,10 +110,10 @@ class Register extends Component {
                     onChange={this.onChange}
                   />
                   {
-                        errors.email && (<div className="invalid-feedback">
-                          {errors.email}
-                        </div>)
-                      }
+                    errors.email && (<div className="invalid-feedback">
+                      {errors.email}
+                    </div>)
+                  }
                   <small className="form-text text-muted">我们使用了gravatar全球公认头像, 如果需要有头像显示, 请使用在gravatar注册的邮箱</small>
                 </div>
                 <div className="form-group">
@@ -123,10 +129,10 @@ class Register extends Component {
                     onChange={this.onChange}
                   />
                   {
-                        errors.password && (<div className="invalid-feedback">
-                          {errors.password}
-                        </div>)
-                      }
+                    errors.password && (<div className="invalid-feedback">
+                      {errors.password}
+                    </div>)
+                  }
                 </div>
                 <div className="form-group">
                   <input
@@ -141,10 +147,10 @@ class Register extends Component {
                     onChange={this.onChange}
                   />
                   {
-                        errors.password2 && (<div className="invalid-feedback">
-                          {errors.password2}
-                        </div>)
-                      }
+                    errors.password2 && (<div className="invalid-feedback">
+                      {errors.password2}
+                    </div>)
+                  }
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
