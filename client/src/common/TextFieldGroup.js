@@ -1,18 +1,16 @@
-import React, { Component } from 'react'
-import classnames from "classnames"
-
-
+import React from 'react';
 import { PropTypes } from 'prop-types';
+import classnames from 'classnames';
+
 
 const TextFieldGroup = ({
   name,
   placeholder,
   value,
-  label,
   error,
   info,
   type,
-  conchange,
+  onChange,
   disabled
 }) => {
   return (
@@ -25,15 +23,14 @@ const TextFieldGroup = ({
         placeholder={placeholder}
         name={name}
         value={value}
-        onChange={this.onChange}
+        onChange={onChange}
+        disabled={disabled}
       />
       {info && <small className="form-text text-muted">{info}</small>}
-      {errors.email && (<div className="invalid-feedback"> {errors.email}</div>)}
-
+      {error && (<div className="invalid-feedback">{error}</div>)}
     </div>
-  )
+  );
 }
-
 
 TextFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
@@ -50,4 +47,4 @@ TextFieldGroup.defaultProps = {
   type: "text"
 }
 
-export default TextFieldGroup
+export default TextFieldGroup;
