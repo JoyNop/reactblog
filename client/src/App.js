@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 //路由
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+
+import PrivateRoute from "./common/privateRoutes";
 
 import './App.css';
 
@@ -67,7 +70,9 @@ class App extends Component {
             <div className="contaier">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
             </div>
             <Footer />
           </div>
