@@ -17,42 +17,10 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
-    }
-
-    if (nextProps.errors) {
-      this.setState({
-        errors: nextProps.errors
-      })
-    }
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-    const newUser = {
-      email: this.state.email,
-      password: this.state.password
-    };
-    // console.log(newUser);
-    this.props.loginUser(newUser);
-  }
 
   render() {
 
     const { errors } = this.state;
-
     return (
       <div className="login">
         <div className="container">
@@ -86,6 +54,39 @@ class Login extends Component {
       </div>
     )
   }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      })
+    }
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const newUser = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    // console.log(newUser);
+    this.props.loginUser(newUser);
+  }
+
 }
 
 Login.propTypes = {
