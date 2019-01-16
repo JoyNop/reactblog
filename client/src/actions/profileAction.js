@@ -7,6 +7,7 @@ export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   // 请求数据
   axios("/api/profile") 
+  
     .then(res =>
       dispatch({
         type: GET_PROFILE,
