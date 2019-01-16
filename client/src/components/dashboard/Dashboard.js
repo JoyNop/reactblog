@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { getCurrentProfile } from "../../actions/profileAction";
 import { connect } from "react-redux";
-import { PROFILE_LOADING } from '../../actions/types';
 import { PropTypes } from "prop-types";
-
+import Spinner from "../../common/Spinner";
+import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
 
@@ -13,9 +13,22 @@ class Dashboard extends Component {
     let dashboardContent
     //判断profile是否为空或者loading是否为真
     if (profile === null || loading) {
-      dashboardContent=<h4>加载动画！</h4>
+      dashboardContent = <Spinner />
     } else {
-      dashboardContent=<h1>hello world</h1>
+      //检查对象中是否有数据
+      if (Object.keys(profile).length > 0) {
+        dashboardContent = <h1>TODO:hello world</h1>
+      } else {
+        //用户已经登录，但是没有任何数据
+        dashboardContent = (
+          <div>
+            <p className='lead text-muted'>欢迎{user.name}!</p>
+            <p>您目前没有任何相关信息，请添加个人信息！</p>
+
+            <Link to='creat-profile' className='btn btn-lg btn-info'>请添加您的个人信息</Link>
+          </div>
+        )
+      }
     }
     return (
       <div className='dahsboard'>
@@ -23,9 +36,10 @@ class Dashboard extends Component {
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4">Dashboard</h1>
-            {dashboardContent}
+              {dashboardContent}
             </div>
-          </div></div>
+          </div>
+        </div>
       </div>
     )
   }
@@ -44,7 +58,7 @@ Dashboard.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  profile:state.profile
+  profile: state.profile
 })
 
 
